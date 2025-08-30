@@ -175,7 +175,7 @@ function OrderPlacedEmailComponent({ order, email_banner }: OrderPlacedEmailProp
                     {/* Footer */}
                     <Section className="bg-gray-50 p-6 mt-10">
                         <Text className="text-center text-gray-500 text-sm">
-                            If you have any questions, reply to this email or contact our support team at cs@bumsurfboards.com.
+                            If you have any questions, reply to this email or contact our support team at {process.env.RESEND_CS_EMAIL}.
                         </Text>
                         <Text className="text-center text-gray-500 text-sm">
                             Order Token: {order.id}
