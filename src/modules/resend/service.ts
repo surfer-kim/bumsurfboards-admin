@@ -12,6 +12,7 @@ import {
     Resend,
 } from "resend"
 import { customerServiceNotificationEmail } from "./emails/cs-notification"
+import { inquiryConfirmationEmail } from "./emails/inquiry-confirmation"
 import { orderPlacedEmail } from "./emails/order-placed"
 
 type ResendOptions = {
@@ -30,11 +31,13 @@ type InjectedDependencies = {
 enum Templates {
     ORDER_PLACED = "order-placed",
     CS_NOTIFICATION = "cs-notification",
+    INQUIRY_CONFIRMATION = "inquiry-confirmation",
 }
 
 const templates: { [key in Templates]?: (props: unknown) => React.ReactNode } = {
     [Templates.ORDER_PLACED]: orderPlacedEmail,
-    [Templates.CS_NOTIFICATION]: customerServiceNotificationEmail
+    [Templates.CS_NOTIFICATION]: customerServiceNotificationEmail,
+    [Templates.INQUIRY_CONFIRMATION]: inquiryConfirmationEmail
 }
 
 class ResendNotificationProviderService extends AbstractNotificationProviderService {
@@ -91,6 +94,8 @@ class ResendNotificationProviderService extends AbstractNotificationProviderServ
                 return "Order Confirmation"
             case Templates.CS_NOTIFICATION:
                 return "Customer Service Notification"
+            case Templates.INQUIRY_CONFIRMATION:
+                return "Inquiry Confirmation"
             default:
                 return "New Email"
         }
