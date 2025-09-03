@@ -17,9 +17,6 @@ export async function POST(req: MedusaRequest<InquiryRequest>, res: MedusaRespon
             input: {
                 name: req.body.name,
                 email: req.body.email,
-                phone: req.body.phone,
-                subject: req.body.subject,
-                message: req.body.message,
             },
         })
     await sendCustomerServiceNotificationWorkflow()
